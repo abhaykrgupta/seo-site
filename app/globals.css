@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+:root {
+  --background: #ffffff;
+  --foreground: #020617; /* slate-950 */
+  --border: #e2e8f0; /* slate-200 */
+  
+  --primary: #0f172a; /* slate-900 */
+  --primary-foreground: #f8fafc; /* slate-50 */
+  
+  --muted: #f1f5f9; /* slate-100 */
+  --muted-foreground: #64748b; /* slate-500 */
+  
+  --radius: 0.75rem; /* Larger border radius for that 2xl feel */
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #020617; /* Deep slate instead of pure black */
+    --foreground: #f8fafc;
+    --border: #1e293b; /* slate-800 */
+    
+    --primary: #3b82f6; /* Modern crisp blue in dark mode */
+    --primary-foreground: #ffffff;
+    
+    --muted: #0f172a; /* slate-900 */
+    --muted-foreground: #94a3b8; /* slate-400 */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply antialiased;
+  }
+}
+
+/* Typography & Layout utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Fintech Gradients */
+  .bg-gradient-fintech {
+    @apply bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950;
+  }
+  
+  .text-gradient-fintech {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400;
+  }
+  
+  .heading-1 {
+    @apply text-5xl font-extrabold tracking-tight lg:text-7xl !leading-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400;
+  }
+  
+  .heading-2 {
+    @apply text-4xl font-bold tracking-tight lg:text-5xl;
+  }
+  
+  .heading-3 {
+    @apply text-2xl font-semibold tracking-tight lg:text-3xl;
+  }
+  
+  .body-text {
+    @apply leading-relaxed text-muted-foreground text-lg;
+  }
+  
+  .small-text {
+    @apply text-sm font-medium leading-none;
+  }
+  
+  .subtle-text {
+    @apply text-sm text-muted-foreground;
+  }
 }
