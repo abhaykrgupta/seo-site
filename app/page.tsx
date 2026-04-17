@@ -8,32 +8,117 @@ export default function Home() {
   return (
     <>
       {/* 1. HERO SECTION */}
-      <Section className="relative flex flex-col items-center justify-center text-center min-h-[75vh] overflow-hidden bg-background">
+      <Section className="relative min-h-[85vh] flex items-center overflow-hidden bg-background pt-24 pb-16 lg:pt-32">
         {/* Subtle Background Glow Elements */}
-        <div className="absolute top-0 -translate-y-12 h-96 w-full max-w-4xl bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/4 left-0 -translate-x-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
         
-        <div className="relative z-10 max-w-4xl space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-          <div className="mx-auto inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary dark:text-primary-foreground">
-            <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-            Welcome to FinVault
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center w-full max-w-7xl mx-auto">
+          {/* Left Column: Text Content */}
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000 text-left">
+            <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary dark:text-primary-foreground">
+              <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+              FinVault Core is live
+            </div>
+            
+            <h1 className="heading-1 !text-5xl lg:!text-6xl xl:!text-7xl leading-[1.1] tracking-tight">
+              Finance tools for <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">smarter decisions.</span>
+            </h1>
+            
+            <p className="body-text text-lg lg:text-xl max-w-xl leading-relaxed text-muted-foreground/90">
+              Take control of your financial future. We provide highly accurate, lightning-fast calculators to help you optimize loans, credit cards, and investments.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
+              <Link href="/tools/emi" className="w-full sm:w-auto">
+                <Button size="lg" className="rounded-full w-full sm:w-auto shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300 px-8">
+                  Start Calculating <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Button variant="outline" size="lg" className="rounded-full w-full sm:w-auto hover:bg-muted/50 transition-colors px-8">
+                Explore Tools
+              </Button>
+            </div>
+            
+            {/* Trust indicators under CTA */}
+            <div className="pt-6 flex flex-wrap items-center gap-6 text-sm font-medium text-muted-foreground/80">
+               <div className="flex items-center gap-2">
+                 <Zap className="h-4 w-4 text-primary" /> Instant Results
+               </div>
+               <div className="flex items-center gap-2">
+                 <Target className="h-4 w-4 text-primary" /> 100% Accurate
+               </div>
+               <div className="flex items-center gap-2">
+                 <Unlock className="h-4 w-4 text-primary" /> Free forever
+               </div>
+            </div>
           </div>
-          
-          <h1 className="heading-1">
-            Finance tools for <br />
-            smarter decisions.
-          </h1>
-          
-          <p className="body-text max-w-2xl mx-auto">
-            Take control of your financial future. We provide accurate, lightning-fast calculators to help you optimize loans, credit cards, and everyday investments.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Button size="lg" className="rounded-full w-full sm:w-auto shadow-md">
-              Start Calculating <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="lg" className="rounded-full w-full sm:w-auto">
-              Explore Tools
-            </Button>
+
+          {/* Right Column: Visual Element (Mock UI) */}
+          <div className="mx-auto w-full max-w-md lg:max-w-[480px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-200 lg:ml-auto">
+            {/* Mock Calculator Card */}
+            <Card className="border-border/60 bg-background/90 backdrop-blur-3xl shadow-2xl p-6 sm:p-8 rounded-[2rem] relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl -mx-4 -my-4 rounded-full pointer-events-none" />
+               <div className="space-y-8 relative z-10">
+                 <div className="flex items-center justify-between border-b border-border/50 pb-5">
+                   <div className="flex items-center gap-3">
+                     <div className="p-2.5 bg-primary/10 rounded-xl text-primary border border-primary/20">
+                       <Calculator className="h-5 w-5" />
+                     </div>
+                     <div>
+                       <h3 className="font-semibold text-foreground text-lg">EMI Calculator</h3>
+                       <p className="text-xs text-muted-foreground mt-0.5">Live Preview</p>
+                     </div>
+                   </div>
+                   <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse ring-4 ring-green-500/20" />
+                 </div>
+                 
+                 <div className="space-y-5">
+                   <div className="space-y-2">
+                     <div className="flex justify-between text-sm">
+                       <span className="text-muted-foreground font-medium">Loan Amount</span>
+                       <span className="font-bold text-foreground">$250,000</span>
+                     </div>
+                     <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
+                       <div className="w-[45%] h-full bg-primary rounded-full relative">
+                         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full shadow border border-border transform translate-x-1" />
+                       </div>
+                     </div>
+                   </div>
+                   
+                   <div className="space-y-2">
+                     <div className="flex justify-between text-sm">
+                       <span className="text-muted-foreground font-medium">Tenure</span>
+                       <span className="font-bold text-foreground">15 Years</span>
+                     </div>
+                     <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
+                       <div className="w-[60%] h-full bg-primary/80 rounded-full relative">
+                         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full shadow border border-border transform translate-x-1" />
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+
+                 <div className="space-y-4">
+                   <div className="bg-primary/5 rounded-xl p-5 border border-primary/10 relative overflow-hidden group hover:bg-primary/10 transition-colors duration-300">
+                     <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-1.5">Monthly EMI</p>
+                     <p className="text-3xl font-bold tracking-tight text-foreground">$2,177.77</p>
+                   </div>
+                   
+                   <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
+                        <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-1">Total Interest</p>
+                        <p className="text-lg font-bold text-foreground">$142,000</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
+                        <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-1">Total Payment</p>
+                        <p className="text-lg font-bold text-foreground">$392,000</p>
+                      </div>
+                   </div>
+                 </div>
+               </div>
+            </Card>
           </div>
         </div>
       </Section>

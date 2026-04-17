@@ -11,15 +11,15 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 import { ArrowRight, Landmark } from "lucide-react"
 
 const schema = z.object({
-  amount: z.number({ message: "Must be a valid number" }).min(1000).max(50000000),
-  rate: z.number({ message: "Must be a valid number" }).min(0.1).max(50),
-  tenure: z.number({ message: "Must be a valid number" }).min(1).max(50),
+  amount: z.number({ message: "Must be a valid number" }).min(1).max(100000000).optional(),
+  rate: z.number({ message: "Must be a valid number" }).min(0.1).max(50).optional(),
+  tenure: z.number({ message: "Must be a valid number" }).min(1).max(50).optional(),
 })
 
 type EmiFormValues = z.infer<typeof schema>
 
 export function EmiCalculator() {
-  const { control, watch } = useForm<EmiFormValues>({
+  const { control, watch, formState: { errors } } = useForm<EmiFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
       amount: 250000,
@@ -100,7 +100,8 @@ export function EmiCalculator() {
                         <Input 
                           type="number"
                           {...field}
-                          onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                          value={field.value ?? ''}
+                          onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
                           className="h-10 text-lg w-32 pl-8 font-semibold text-right"
                         />
                       </div>
@@ -115,6 +116,7 @@ export function EmiCalculator() {
                   <RangeSlider min="1000" max="1000000" step="1000" value={field.value} onChange={(e: any) => field.onChange(Number(e.target.value))} />
                 )}
               />
+              {errors.amount && <p className="text-[10px] text-red-500 font-medium mt-1">{errors.amount.message}</p>}
             </div>
 
             <div className="space-y-4">
@@ -129,7 +131,8 @@ export function EmiCalculator() {
                         type="number"
                         step="0.1"
                         {...field}
-                        onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                        value={field.value ?? ''}
+                        onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
                         className="h-10 text-lg w-28 pr-8 font-semibold text-right"
                       />
                     )}
@@ -144,6 +147,7 @@ export function EmiCalculator() {
                   <RangeSlider min="0.1" max="25" step="0.1" value={field.value} onChange={(e: any) => field.onChange(Number(e.target.value))} />
                 )}
               />
+              {errors.rate && <p className="text-[10px] text-red-500 font-medium mt-1">{errors.rate.message}</p>}
             </div>
 
             <div className="space-y-4">
@@ -157,7 +161,8 @@ export function EmiCalculator() {
                       <Input 
                         type="number"
                         {...field}
-                        onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                        value={field.value ?? ''}
+                        onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
                         className="h-10 text-lg w-28 pr-12 font-semibold text-right"
                       />
                     )}
@@ -172,6 +177,7 @@ export function EmiCalculator() {
                   <RangeSlider min="1" max="30" step="1" value={field.value} onChange={(e: any) => field.onChange(Number(e.target.value))} />
                 )}
               />
+              {errors.tenure && <p className="text-[10px] text-red-500 font-medium mt-1">{errors.tenure.message}</p>}
             </div>
 
           </CardContent>
