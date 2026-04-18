@@ -53,7 +53,7 @@ export default function Home() {
                  <Unlock className="h-4 w-4 text-primary" /> Free forever
                </div>
             </div>
-          </div>
+          </div> 
 
           {/* Right Column: Visual Element (Mock UI) */}
           <div className="mx-auto w-full max-w-md lg:max-w-[480px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-200 lg:ml-auto">
