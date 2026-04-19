@@ -6,12 +6,14 @@ import { getBlogPosts, getPostBySlug } from "@/lib/blog"
 import { Section } from "@/components/ui/section"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Calendar, Tag } from "lucide-react"
+import { AuthorBio } from "@/components/blog/AuthorBio"
+import { CalculatorPromo } from "@/components/blog/CalculatorPromo"
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://finvault.com"
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://finvaultguide.com"
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts()
@@ -144,8 +146,17 @@ export default async function BlogPostPage({ params }: Props) {
           <hr className="mb-12 border-border/50" />
 
           <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary hover:prose-a:underline prose-img:rounded-2xl">
-            <MDXRemote source={post.content} />
+            <MDXRemote 
+              source={post.content} 
+              components={{
+                CalculatorPromo: CalculatorPromo
+              }}
+            />
           </div>
+
+          <AuthorBio 
+            lastUpdated={new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+          />
         </div>
       </Section>
     </>

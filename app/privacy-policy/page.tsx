@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
 
         <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground prose-h2:text-foreground prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-foreground prose-h3:font-semibold prose-strong:text-foreground">
           <p>
-            FinVault ("we", "our", or "us") respects your privacy and is committed to protecting it through our compliance with this policy. This Privacy Policy governs your access to and use of <strong>finvault.com</strong> (the "Website"), including any content, functionality, and services offered on or through the Website.
+            FinVault ("we", "our", or "us") respects your privacy and is committed to protecting it through our compliance with this policy. This Privacy Policy governs your access to and use of <strong>finvaultguide.com</strong> (the "Website"), including any content, functionality, and services offered on or through the Website.
           </p>
 
           <h2>1. Information We Collect</h2>

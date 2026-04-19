@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next"
 import { getBlogPosts } from "@/lib/blog"
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://finvault.com"
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://finvaultguide.com"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static Routes
