@@ -88,7 +88,7 @@ export function CreditCardOptimizer() {
       step={step}
       value={value || 0}
       onChange={onChange}
-      className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary mt-4"
+      className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary mt-4"
     />
   )
 
@@ -118,8 +118,10 @@ export function CreditCardOptimizer() {
                     render={({ field }) => (
                       <Input 
                         type="number"
+                        step="100"
                         {...field}
-                        value={field.value === 0 ? '' : field.value ?? ''}
+                        onChange={(e) => field.onChange(e.target.value)}
+                        value={field.value || ''}
                         className="h-10 text-lg w-32 pl-8 font-semibold text-right"
                       />
                     )}
@@ -148,7 +150,8 @@ export function CreditCardOptimizer() {
                         type="number"
                         step="0.1"
                         {...field}
-                        value={field.value === 0 ? '' : field.value ?? ''}
+                        onChange={(e) => field.onChange(e.target.value)}
+                        value={field.value || ''}
                         className="h-10 text-lg w-28 pr-8 font-semibold text-right"
                       />
                     )}
@@ -177,8 +180,10 @@ export function CreditCardOptimizer() {
                     render={({ field }) => (
                       <Input 
                         type="number"
+                        step="10"
                         {...field}
-                        value={field.value === 0 ? '' : field.value ?? ''}
+                        onChange={(e) => field.onChange(e.target.value)}
+                        value={field.value || ''}
                         className="h-10 text-lg w-28 pl-8 font-semibold text-right"
                       />
                     )}

@@ -169,10 +169,20 @@ export function Navbar() {
                 >
                   <Calculator className="h-4 w-4 text-primary" /> EMI Calculator
                 </Link>
-                <div className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-muted-foreground opacity-50 cursor-not-allowed">
-                  <Landmark className="h-4 w-4" /> Mortgage Simulator 
-                  <span className="text-[9px] uppercase font-bold tracking-widest bg-muted px-1.5 py-0.5 rounded border border-border/50 ml-auto">Soon</span>
-                </div>
+                <Link 
+                  href="/tools/loan-eligibility" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-foreground rounded-lg hover:bg-muted/50 transition-colors"
+                >
+                  <Landmark className="h-4 w-4 text-primary" /> Loan Eligibility
+                </Link>
+                <Link 
+                  href="/tools/credit-card" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-foreground rounded-lg hover:bg-muted/50 transition-colors"
+                >
+                  <CreditCard className="h-4 w-4 text-primary" /> Credit Card Optimizer
+                </Link>
               </div>
             </div>
 

@@ -21,7 +21,7 @@ export default function AboutPage() {
         <div className="prose prose-lg dark:prose-invert max-w-none prose-p:leading-relaxed text-muted-foreground w-full">
           <h2 className="text-foreground font-bold text-3xl">Who We Are</h2>
           <p>
-            FinVault began with a simple observation: financial math is incredibly complex, but it shouldn't be confusing for the everyday consumer. We are a team of software engineers, financial analysts, and designers dedicated to bringing absolute transparency to your personal finances.
+            FinVault began with a simple observation: financial math is incredibly complex, but it shouldn't be confusing for the everyday consumer. FinVault is a platform built by engineering and financial experts dedicated to bringing absolute transparency to personal finances.
           </p>
           <p>
             Whether you are calculating a 30-year mortgage, deciphering credit card interest, or learning to budget via the 50/30/20 rule, our platform is built to provide answers instantaneously—without paywalls, confusing jargon, or mandatory sign-ups.

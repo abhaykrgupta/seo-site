@@ -26,26 +26,26 @@ export default function PrivacyPolicyPage() {
 
         <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground prose-h2:text-foreground prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-foreground prose-h3:font-semibold prose-strong:text-foreground">
           <p>
-            FinVault ("we", "our", or "us") respects your privacy and is committed to protecting it through our compliance with this policy. This Privacy Policy governs your access to and use of <strong>finvaultguide.com</strong> (the "Website"), including any content, functionality, and services offered on or through the Website.
+            FinVault respects user privacy and is committed to protecting it through compliance with this policy. This Privacy Policy governs all access to and use of <strong>finvaultguide.com</strong> (the "Website"), including any content, functionality, and services offered on or through the Website.
           </p>
 
-          <h2>1. Information We Collect</h2>
+          <h2>1. Information Collected</h2>
           <p>
-            We collect several types of information from and about users of our Website, including:
+            Several types of information from and about users of the Website are collected, including:
           </p>
           <ul>
-            <li><strong>Non-Personal Data:</strong> We automatically collect standard analytics data (such as IP addresses, browser types, and referral pages) using cookies to help us understand how visitors use our site and to improve the user experience.</li>
-            <li><strong>Personal Data:</strong> If you use our contact form or subscribe to our newsletter, you may voluntarily provide your name and email address.</li>
-            <li><strong>Financial Data Input:</strong> Our calculators (e.g., EMI, Credit Card) run entirely <em>client-side</em> in your browser. We <strong>do not</strong> transmit, save, or store the financial numbers you input on our servers.</li>
+            <li><strong>Non-Personal Data:</strong> Standard analytics data (such as IP addresses, browser types, and referral pages) is collected automatically using cookies to help understand how visitors use the site and to improve the user experience.</li>
+            <li><strong>Personal Data:</strong> If the contact form or newsletter is used, users may voluntarily provide a name and email address.</li>
+            <li><strong>Financial Data Input:</strong> The calculators (e.g., EMI, Credit Card) run entirely <em>client-side</em> in the browser. FinVault <strong>does not</strong> transmit, save, or store the financial numbers inputted.</li>
           </ul>
 
-          <h2>2. How We Use Your Information</h2>
-          <p>We use information that we collect about you or that you provide to us:</p>
+          <h2>2. How Information is Used</h2>
+          <p>Information collected through this platform is used in the following ways:</p>
           <ul>
-            <li>To present our Website and its contents to you.</li>
-            <li>To provide you with information, products, or services that you request from us (e.g., responding to contact form submissions).</li>
-            <li>To display personalized advertisements (Google AdSense), which keeps our calculators free to use.</li>
-            <li>To improve our website's functionality through anonymous analytics.</li>
+            <li>To present the Website and its contents to users.</li>
+            <li>To provide information, products, or services requested (e.g., responding to contact form submissions).</li>
+            <li>To display personalized advertisements (Google AdSense), which keeps the calculators free to use.</li>
+            <li>To improve functionality through anonymous analytics.</li>
           </ul>
 
           <h2>3. Cookies and Advertising (Google AdSense)</h2>
@@ -60,27 +60,27 @@ export default function PrivacyPolicyPage() {
           <h2>4. GDPR and CCPA Compliance</h2>
           <h3>For European Economic Area (EEA) Residents:</h3>
           <p>
-            If you are a resident of the EEA, you have certain data protection rights under the General Data Protection Regulation (GDPR). You have the right to access, update, or delete the personal information we have on you. If you wish to exercise these rights, please contact us.
+            If you are a resident of the EEA, you have certain data protection rights under the General Data Protection Regulation (GDPR). You have the right to access, update, or delete the personal information housed. If you wish to exercise these rights, please submit an inquiry.
           </p>
 
           <h3>For California Residents:</h3>
           <p>
-            Under the California Consumer Privacy Act (CCPA), California residents have the right to request that we disclose the categories and specific pieces of personal data we collect, and the right to request the deletion of your personal data. <strong>FinVault does not sell your personal data to third parties.</strong>
+            Under the California Consumer Privacy Act (CCPA), California residents have the right to request the disclosure of the categories and specific pieces of personal data collected, and the right to request the deletion of personal data. <strong>FinVault does not sell personal data to third parties.</strong>
           </p>
 
           <h2>5. Data Security</h2>
           <p>
-            We have implemented measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure. However, the transmission of information via the internet is not completely secure, and we cannot guarantee the absolute security of your personal information transmitted to our Website.
+            Measures have been implemented to secure personal information from accidental loss and from unauthorized access, use, alteration, and disclosure. However, the transmission of information via the internet is not completely secure, and absolute security of personal information transmitted to the Website cannot be guaranteed.
           </p>
 
-          <h2>6. Changes to Our Privacy Policy</h2>
+          <h2>6. Changes to the Privacy Policy</h2>
           <p>
-            It is our policy to post any changes we make to our privacy policy on this page. If we make material changes to how we treat our users' personal information, we will notify you through a notice on the Website home page.
+            It is the policy of FinVault to post any changes made to privacy practices on this page. If material changes are made to how user information is treated, notifications will be posted on the Website home page.
           </p>
 
           <h2>7. Contact Information</h2>
           <p>
-            To ask questions or comment about this privacy policy and our privacy practices, contact us via our <a href="/contact">Contact Page</a>.
+            To ask questions or comment about this privacy policy and its practices, please use the <a href="/contact">Contact Support portal</a>.
           </p>
         </div>
       </div>

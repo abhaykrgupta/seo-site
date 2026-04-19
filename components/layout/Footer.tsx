@@ -97,6 +97,9 @@ export function Footer() {
               <Link href="/privacy-policy" className="text-sm font-medium text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:text-primary">
                 Privacy Policy
               </Link>
+              <Link href="/terms" className="text-sm font-medium text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:text-primary">
+                Terms of Service
+              </Link>
               <Link href="/disclaimer" className="text-sm font-medium text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:text-primary">
                 Disclaimer
               </Link>
@@ -135,7 +138,7 @@ export function Footer() {
 
         <div className="mt-10 border-t border-border/40 pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-sm font-medium text-muted-foreground/80">
-            © {new Date().getFullYear()} FinVault Inc. Designed for mathematical precision.
+            © {new Date().getFullYear()} FinVault. An independent financial education resource.
           </p>
           <div className="flex items-center gap-2 text-sm text-muted-foreground/80 px-3 py-1 rounded-full bg-muted/30 border border-border/40 object-contain">
              <span className="relative flex h-2.5 w-2.5">

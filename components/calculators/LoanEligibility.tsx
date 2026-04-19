@@ -85,7 +85,7 @@ export function LoanEligibility() {
       step={step}
       value={value || 0}
       onChange={onChange}
-      className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary mt-4"
+      className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary mt-4"
     />
   )
 
@@ -112,7 +112,7 @@ export function LoanEligibility() {
                     name="income"
                     control={control}
                     render={({ field }) => (
-                      <Input type="number" {...field} value={field.value === 0 ? '' : field.value ?? ''} className="h-10 text-lg w-32 pl-8 text-right font-bold" />
+                      <Input type="number" step="100" {...field} onChange={(e) => field.onChange(e.target.value)} value={field.value || ''} className="h-10 text-lg w-32 pl-8 text-right font-bold" />
                     )}
                   />
                 </div>
@@ -135,7 +135,7 @@ export function LoanEligibility() {
                     name="obligations"
                     control={control}
                     render={({ field }) => (
-                      <Input type="number" {...field} value={field.value === 0 ? '' : field.value ?? ''} className="h-10 text-lg w-32 pl-8 text-right font-bold" />
+                      <Input type="number" step="50" {...field} onChange={(e) => field.onChange(e.target.value)} value={field.value || ''} className="h-10 text-lg w-32 pl-8 text-right font-bold" />
                     )}
                   />
                 </div>
@@ -156,7 +156,7 @@ export function LoanEligibility() {
                     name="tenure"
                     control={control}
                     render={({ field }) => (
-                      <Input type="number" {...field} value={field.value === 0 ? '' : field.value ?? ''} className="h-10 text-lg w-full font-bold" />
+                      <Input type="number" step="1" {...field} onChange={(e) => field.onChange(e.target.value)} value={field.value || ''} className="h-10 text-lg w-full font-bold" />
                     )}
                   />
                   <Controller
@@ -173,7 +173,7 @@ export function LoanEligibility() {
                     name="rate"
                     control={control}
                     render={({ field }) => (
-                      <Input type="number" step="0.1" {...field} value={field.value === 0 ? '' : field.value ?? ''} className="h-10 text-lg w-full font-bold" />
+                      <Input type="number" step="0.1" {...field} onChange={(e) => field.onChange(e.target.value)} value={field.value || ''} className="h-10 text-lg w-full font-bold" />
                     )}
                   />
                   <Controller
