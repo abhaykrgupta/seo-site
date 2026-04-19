@@ -184,7 +184,7 @@ export default function Home() {
               </CardDescription>
             </CardContent>
             <CardFooter>
-              <Link href="/tools/loan-checker" className="text-sm font-semibold text-primary flex items-center hover:opacity-80">
+              <Link href="/tools/loan-eligibility" className="text-sm font-semibold text-primary flex items-center hover:opacity-80">
                 Check Eligibility <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </CardFooter>

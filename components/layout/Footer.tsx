@@ -1,18 +1,27 @@
 "use client"
 
 import Link from "next/link"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, ShieldCheck } from "lucide-react"
+import { ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react"
 
 export function Footer() {
+  const [isSubscribed, setIsSubscribed] = useState(false)
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubscribed(true)
+    setTimeout(() => setIsSubscribed(false), 3000)
+  }
+
   return (
-    <footer className="relative mt-32 border-t border-border/50 overflow-hidden bg-background/50">
+    <footer className="relative mt-20 border-t border-border/50 overflow-hidden bg-background/50">
       {/* Premium Background Glow Effect */}
       <div className="absolute inset-0 bg-background pointer-events-none" />
       <div className="absolute top-0 left-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
       
-      <div className="container relative z-10 mx-auto max-w-7xl px-6 pt-20 pb-12 lg:px-8">
+      <div className="container relative z-10 mx-auto max-w-7xl px-6 pt-16 pb-8 lg:px-8">
         
         {/* Top Trust Banner */}
         <div className="flex flex-col items-center justify-center mb-20 text-center space-y-6">
@@ -101,15 +110,22 @@ export function Footer() {
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                 Join <strong className="text-foreground">12,400+</strong> subscribers getting exclusive financial strategies and calculator updates sent directly to their inbox.
               </p>
-              <form className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row" onSubmit={(e) => e.preventDefault()}>
+              <form className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row" onSubmit={handleSubscribe}>
                 <Input 
                   type="email" 
                   placeholder="Enter your email address" 
-                  className="bg-background/80 backdrop-blur-xl border-border/80 hover:border-primary/50 focus-visible:ring-primary/20 h-11 shadow-sm"
+                  className="bg-background/80 backdrop-blur-xl border-border/80 hover:border-primary/50 focus-visible:ring-primary/20 h-11 shadow-sm transition-colors"
                   required
+                  disabled={isSubscribed}
                 />
-                <Button type="submit" className="h-11 shadow-sm group whitespace-nowrap">
-                  Subscribe <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
+                <Button type="submit" disabled={isSubscribed} className="h-11 shadow-sm group whitespace-nowrap min-w-[120px] transition-all duration-300">
+                  {isSubscribed ? (
+                    <span className="flex items-center text-green-300">
+                      <CheckCircle2 className="w-4 h-4 mr-1.5" /> Subscribed
+                    </span>
+                  ) : (
+                    <>Subscribe <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" /></>
+                  )}
                 </Button>
               </form>
             </div>
@@ -117,8 +133,7 @@ export function Footer() {
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-20 border-t border-border/40 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-10 border-t border-border/40 pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-sm font-medium text-muted-foreground/80">
             © {new Date().getFullYear()} FinVault Inc. Designed for mathematical precision.
           </p>

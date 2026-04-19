@@ -1,11 +1,21 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
-import { Menu, Search, ChevronDown, Calculator, Landmark, X } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Menu, Search, ChevronDown, Calculator, Landmark, X, CreditCard } from "lucide-react"
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+    return () => { document.body.style.overflow = "unset" }
+  }, [isMobileMenuOpen])
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/60 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/40 transition-all duration-300">
@@ -54,19 +64,27 @@ export function Navbar() {
                       </div>
                     </Link>
                     
-                    {/* Tool Option 2 (Soon) */}
-                    <div className="flex items-start gap-4 p-3 rounded-xl opacity-50 cursor-not-allowed">
-                      <div className="bg-muted text-muted-foreground p-2.5 rounded-xl border border-border/50">
+                    {/* Tool Option 2 (Active) */}
+                    <Link href="/tools/loan-eligibility" className="flex items-start gap-4 p-3 rounded-xl transition-colors hover:bg-muted/60 group/item">
+                      <div className="bg-primary/10 text-primary p-2.5 rounded-xl shadow-sm">
                         <Landmark className="h-5 w-5" />
                       </div>
                       <div>
-                        <div className="flex items-center gap-2">
-                          <div className="text-sm font-bold text-foreground">Mortgage Simulator</div>
-                          <span className="text-[9px] uppercase font-bold tracking-widest text-muted-foreground bg-muted px-1.5 py-0.5 rounded border border-border/50">Soon</span>
-                        </div>
-                        <div className="text-xs text-muted-foreground mt-0.5 leading-relaxed">Stress-test your future home affordability.</div>
+                        <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">Loan Eligibility</div>
+                        <div className="text-xs text-muted-foreground mt-0.5 leading-relaxed">Check exactly how much you can borrow instantly.</div>
                       </div>
-                    </div>
+                    </Link>
+
+                    {/* Tool Option 3 (Active) */}
+                    <Link href="/tools/credit-card" className="flex items-start gap-4 p-3 rounded-xl transition-colors hover:bg-muted/60 group/item">
+                      <div className="bg-primary/10 text-primary p-2.5 rounded-xl shadow-sm">
+                        <CreditCard className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">Credit Card Optimizer</div>
+                        <div className="text-xs text-muted-foreground mt-0.5 leading-relaxed">Discover the fastest way to become debt-free.</div>
+                      </div>
+                    </Link>
                     
                   </div>
                   
