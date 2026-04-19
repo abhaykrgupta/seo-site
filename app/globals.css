@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+/* 
+  Custom Blog Styling (Replaces @tailwindcss/typography)
+  Targeting the .prose class used in our blog pages
+*/
+@layer base {
+  .prose {
+    @apply text-muted-foreground leading-relaxed text-lg;
+  }
+  .prose h1 {
+    @apply text-3xl font-bold text-foreground mt-8 mb-4 tracking-tight;
+  }
+  .prose h2 {
+    @apply text-2xl font-bold text-foreground mt-8 mb-4 tracking-tight;
+  }
+  .prose h3 {
+    @apply text-xl font-bold text-foreground mt-6 mb-3 tracking-tight;
+  }
+  .prose p {
+    @apply mb-6;
+  }
+  .prose strong {
+    @apply font-bold text-foreground;
+  }
+  .prose ul {
+    @apply list-disc list-inside mb-6 space-y-2;
+  }
+  .prose ol {
+    @apply list-decimal list-inside mb-6 space-y-2;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-6 py-2 italic text-muted-foreground/90 bg-primary/5 rounded-r-lg my-8;
+  }
+  .prose code {
+    @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-primary;
+  }
+  .prose pre {
+    @apply bg-slate-950 text-slate-50 p-6 rounded-2xl overflow-x-auto my-8 border border-white/10;
+  }
+}
+
 @theme inline {
   /* Colors */
   --color-background: var(--background);

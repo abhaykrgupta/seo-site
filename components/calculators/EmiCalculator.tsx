@@ -11,9 +11,9 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 import { ArrowRight, Landmark } from "lucide-react"
 
 const schema = z.object({
-  amount: z.number({ message: "Must be a valid number" }).min(1).max(100000000).optional(),
-  rate: z.number({ message: "Must be a valid number" }).min(0.1).max(50).optional(),
-  tenure: z.number({ message: "Must be a valid number" }).min(1).max(50).optional(),
+  amount: z.union([z.coerce.number(), z.string()]).optional(),
+  rate: z.union([z.coerce.number(), z.string()]).optional(),
+  tenure: z.union([z.coerce.number(), z.string()]).optional(),
 })
 
 type EmiFormValues = z.infer<typeof schema>
@@ -100,8 +100,7 @@ export function EmiCalculator() {
                         <Input 
                           type="number"
                           {...field}
-                          value={field.value ?? ''}
-                          onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
+                          value={field.value === 0 ? '' : field.value ?? ''}
                           className="h-10 text-lg w-32 pl-8 font-semibold text-right"
                         />
                       </div>
@@ -131,8 +130,7 @@ export function EmiCalculator() {
                         type="number"
                         step="0.1"
                         {...field}
-                        value={field.value ?? ''}
-                        onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
+                        value={field.value === 0 ? '' : field.value ?? ''}
                         className="h-10 text-lg w-28 pr-8 font-semibold text-right"
                       />
                     )}
@@ -161,8 +159,7 @@ export function EmiCalculator() {
                       <Input 
                         type="number"
                         {...field}
-                        value={field.value ?? ''}
-                        onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
+                        value={field.value === 0 ? '' : field.value ?? ''}
                         className="h-10 text-lg w-28 pr-12 font-semibold text-right"
                       />
                     )}

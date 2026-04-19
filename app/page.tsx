@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       {/* 1. HERO SECTION */}
-      <Section className="relative min-h-[85vh] flex items-center overflow-hidden bg-background pt-24 pb-16 lg:pt-32">
+      <Section className="relative min-h-[85vh] flex items-center overflow-hidden bg-background pt-8 pb-16 lg:pt-12">
         {/* Subtle Background Glow Elements */}
         <div className="absolute top-1/4 left-0 -translate-x-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />

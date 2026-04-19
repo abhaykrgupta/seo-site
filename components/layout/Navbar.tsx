@@ -19,7 +19,7 @@ export function Navbar() {
               Home
             </Link>
             <Link
-              href="/tools"
+              href="/tools/emi"
               className="text-sm font-medium text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:text-foreground"
             >
               Tools
@@ -34,7 +34,7 @@ export function Navbar() {
         </div>
         <div className="flex items-center gap-4">
           <Link
-            href="/calculate"
+            href="/tools/emi"
             className="hidden md:inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98]"
           >
             Start Calculating

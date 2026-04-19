@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function EmiCalculatorPage() {
   return (
     <>
-      <Section className="pb-8 md:pb-12 pt-16 lg:pt-24 bg-gradient-to-b from-muted/50 to-background">
+      <Section className="pb-8 md:pb-12 pt-8 lg:pt-12 bg-gradient-to-b from-muted/50 to-background">
         <div className="max-w-4xl mx-auto text-center space-y-4">
           <h1 className="heading-1 !text-4xl md:!text-5xl lg:!text-6xl">
             EMI Calculator
