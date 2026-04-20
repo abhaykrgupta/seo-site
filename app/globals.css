@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
+
 
 /* 
   Custom Blog Styling (Replaces @tailwindcss/typography)
@@ -69,19 +71,18 @@
   --radius: 0.75rem; /* Larger border radius for that 2xl feel */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #020617; /* Deep slate instead of pure black */
-    --foreground: #f8fafc;
-    --border: #1e293b; /* slate-800 */
-    
-    --primary: #3b82f6; /* Modern crisp blue in dark mode */
-    --primary-foreground: #ffffff;
-    
-    --muted: #0f172a; /* slate-900 */
-    --muted-foreground: #94a3b8; /* slate-400 */
-  }
+.dark {
+  --background: #020617; /* Deep slate instead of pure black */
+  --foreground: #f8fafc;
+  --border: #1e293b; /* slate-800 */
+  
+  --primary: #3b82f6; /* Modern crisp blue in dark mode */
+  --primary-foreground: #ffffff;
+  
+  --muted: #0f172a; /* slate-900 */
+  --muted-foreground: #94a3b8; /* slate-400 */
 }
+
 
 @layer base {
   * {

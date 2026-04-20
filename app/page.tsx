@@ -243,9 +243,11 @@ export default function Home() {
               Learn the strategies that help you maximize your financial leverage.
             </p>
           </div>
-          <Button variant="outline" className="hidden md:inline-flex rounded-full">
-            Read all articles
-          </Button>
+          <Link href="/blog">
+            <Button variant="outline" className="hidden md:inline-flex rounded-full">
+              Read all articles
+            </Button>
+          </Link>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -292,9 +294,11 @@ export default function Home() {
           ))}
         </div>
         <div className="mt-8 text-center md:hidden">
-          <Button variant="outline" className="rounded-full w-full">
-            Read all articles
-          </Button>
+          <Link href="/blog">
+            <Button variant="outline" className="rounded-full w-full">
+              Read all articles
+            </Button>
+          </Link>
         </div>
       </Section>
     </>

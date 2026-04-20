@@ -11,6 +11,9 @@ export interface BlogPost {
   excerpt: string
   slug: string
   content: string
+  image?: string
+  trending?: boolean
+  type?: "guide" | "calculator" | "standard"
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -48,4 +51,29 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   } catch (error) {
     return null
   }
+}
+export interface TOCHeader {
+  id: string
+  text: string
+  level: number
+}
+
+export function extractHeadings(content: string): TOCHeader[] {
+  // Matches ## H2 and ### H3
+  const headingRegex = /^(#{2,3})\s+(.*)$/gm
+  const headings: TOCHeader[] = []
+  let match
+
+  while ((match = headingRegex.exec(content)) !== null) {
+    const level = match[1].length // 2 or 3
+    const text = match[2].trim()
+    const id = text
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "") // Remove non-alphanumeric chars
+      .replace(/\s+/g, "-") // Replace spaces with dashes
+
+    headings.push({ id, text, level })
+  }
+
+  return headings
 }
