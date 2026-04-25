@@ -4,9 +4,11 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import { Menu, Search, ChevronDown, Calculator, Landmark, X, CreditCard } from "lucide-react"
 import { ThemeToggle } from "@/components/ui/ThemeToggle"
+import { SearchModal } from "@/components/layout/SearchModal"
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -17,6 +19,18 @@ export function Navbar() {
     }
     return () => { document.body.style.overflow = "unset" }
   }, [isMobileMenuOpen])
+
+  // Global ⌘K / Ctrl+K shortcut
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault()
+        setIsSearchOpen(true)
+      }
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/60 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/40 transition-all duration-300">
@@ -31,7 +45,10 @@ export function Navbar() {
           </Link>
 
           {/* Inline Search Placeholder */}
-          <button className="hidden lg:flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-lg border border-border/60 bg-muted/30 text-muted-foreground hover:bg-muted text-sm shadow-sm transition-all hover:border-border min-w-[200px]">
+          <button
+            onClick={() => setIsSearchOpen(true)}
+            className="hidden lg:flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-lg border border-border/60 bg-muted/30 text-muted-foreground hover:bg-muted text-sm shadow-sm transition-all hover:border-border min-w-[200px]"
+          >
             <Search className="h-4 w-4 opacity-70" />
             <span className="flex-1 text-left font-medium">Search...</span>
             <kbd className="hidden xl:inline-flex items-center justify-center rounded-md border border-border/60 bg-background px-1.5 py-0.5 font-sans text-xs font-semibold opacity-70 shadow-sm">
@@ -154,7 +171,10 @@ export function Navbar() {
             
             {/* Mobile Search */}
             <div className="px-2">
-              <button className="flex w-full items-center gap-2 px-3 py-2.5 rounded-lg border border-border/60 bg-muted/30 text-muted-foreground hover:bg-muted text-sm shadow-sm transition-all">
+              <button
+                onClick={() => { setIsSearchOpen(true); setIsMobileMenuOpen(false) }}
+                className="flex w-full items-center gap-2 px-3 py-2.5 rounded-lg border border-border/60 bg-muted/30 text-muted-foreground hover:bg-muted text-sm shadow-sm transition-all"
+              >
                 <Search className="h-4 w-4 opacity-70" />
                 <span className="font-medium text-left flex-1">Search...</span>
                 <kbd className="hidden sm:inline-flex items-center justify-center rounded-md border border-border/60 bg-background px-1.5 py-0.5 font-sans text-xs font-semibold opacity-70 shadow-sm">
@@ -226,6 +246,8 @@ export function Navbar() {
           </nav>
         </div>
       )}
+
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   )
 }

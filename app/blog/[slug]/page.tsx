@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: Props) {
         "headline": post.title,
         "description": post.excerpt,
         "datePublished": new Date(post.date).toISOString(),
-        "dateModified": new Date(post.date).toISOString(),
+        "dateModified": new Date(post.updatedAt || post.date).toISOString(),
         "url": postUrl,
         "author": {
           "@type": "Organization",
@@ -125,12 +125,34 @@ export default async function BlogPostPage({ params }: Props) {
     ]
   }
 
+  const faqJsonLd =
+    post.faqs && post.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <Section className="pt-4 pb-16 lg:pt-8 bg-background">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <Link href="/blog">
