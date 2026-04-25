@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useMemo } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
@@ -20,7 +20,8 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>
 
 export function LoanEligibility() {
-  const [isSearching, setIsSearching] = React.useState(false)
+  const [isSearching, setIsSearching] = useState(false)
+  const [hasMounted, setHasMounted] = useState(false)
 
   const handleSearch = () => {
     setIsSearching(true)
@@ -39,6 +40,10 @@ export function LoanEligibility() {
   })
 
   const formValues = watch()
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
 
   const eligibility = useMemo(() => {
     const monthlyIncome = Number(formValues.income) || 0
@@ -194,18 +199,22 @@ export function LoanEligibility() {
               <CardTitle className="text-lg">Monthly Income Allocation</CardTitle>
            </CardHeader>
            <CardContent className="h-[280px] pt-8">
-             <ResponsiveContainer width="100%" height="100%">
-               <BarChart data={chartData} layout="vertical" margin={{ left: 20, right: 30 }}>
-                 <XAxis type="number" hide />
-                 <YAxis dataKey="name" type="category" width={120} tick={{ fontSize: 12, fontWeight: 600 }} />
-                 <Tooltip formatter={(v) => formatCurrency(Number(v))} cursor={{ fill: 'transparent' }} />
-                 <Bar dataKey="value" radius={[0, 8, 8, 0]} barSize={40}>
-                    {chartData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.fill} />
-                    ))}
-                 </Bar>
-               </BarChart>
-             </ResponsiveContainer>
+             {hasMounted ? (
+               <ResponsiveContainer width="100%" height="100%">
+                 <BarChart data={chartData} layout="vertical" margin={{ left: 20, right: 30 }}>
+                   <XAxis type="number" hide />
+                   <YAxis dataKey="name" type="category" width={120} tick={{ fontSize: 12, fontWeight: 600 }} />
+                   <Tooltip formatter={(v) => formatCurrency(Number(v))} cursor={{ fill: 'transparent' }} />
+                   <Bar dataKey="value" radius={[0, 8, 8, 0]} barSize={40}>
+                      {chartData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.fill} />
+                      ))}
+                   </Bar>
+                 </BarChart>
+               </ResponsiveContainer>
+             ) : (
+               <div className="h-full w-full rounded-2xl bg-muted/30 animate-pulse" />
+             )}
            </CardContent>
         </Card>
       </div>

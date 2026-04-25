@@ -104,6 +104,7 @@ export function EmiCalculator() {
   const router = useRouter()
   const pathname = usePathname()
   const initialized = useRef(false)
+  const [hasMounted, setHasMounted] = useState(false)
 
   const [showAmortization, setShowAmortization] = useState(false)
   const [shareStatus, setShareStatus] = useState<"idle" | "link" | "text">("idle")
@@ -124,6 +125,10 @@ export function EmiCalculator() {
   })
 
   const formValues = watch()
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
 
   // Simulator state — fully independent from react-hook-form
   const [simulator, setSimulator] = useState<SimulatorState>({
@@ -654,31 +659,35 @@ export function EmiCalculator() {
             </CardHeader>
             <CardContent className="flex flex-col sm:flex-row items-center gap-8 pb-8">
               <div className="w-full sm:w-1/2 h-[200px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={chartData}
-                      cx="50%" cy="50%"
-                      innerRadius={60} outerRadius={80}
-                      paddingAngle={2}
-                      dataKey="value"
-                      stroke="none"
-                    >
-                      {chartData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip
-                      formatter={(value: unknown) => formatCurrency(Number(value) || 0)}
-                      contentStyle={{
-                        backgroundColor: "var(--background)",
-                        border: "1px solid var(--border)",
-                        borderRadius: "8px",
-                        fontSize: "13px",
-                      }}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
+                {hasMounted ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={chartData}
+                        cx="50%" cy="50%"
+                        innerRadius={60} outerRadius={80}
+                        paddingAngle={2}
+                        dataKey="value"
+                        stroke="none"
+                      >
+                        {chartData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.color} />
+                        ))}
+                      </Pie>
+                      <Tooltip
+                        formatter={(value: unknown) => formatCurrency(Number(value) || 0)}
+                        contentStyle={{
+                          backgroundColor: "var(--background)",
+                          border: "1px solid var(--border)",
+                          borderRadius: "8px",
+                          fontSize: "13px",
+                        }}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className="h-full w-full rounded-2xl bg-muted/30 animate-pulse" />
+                )}
               </div>
               <div className="w-full sm:w-1/2 space-y-4">
                 <div className="flex items-center justify-between">

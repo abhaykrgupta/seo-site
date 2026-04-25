@@ -59,7 +59,7 @@ export const metadata: Metadata = {
       "Free EMI calculator, credit card payoff optimizer, and loan eligibility checker. Instant results, no sign-up required.",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
         alt: "FinVault — Free Financial Calculators",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     title: "FinVault — Free Financial Calculators & Money Guides",
     description:
       "Free EMI calculator, credit card payoff optimizer, and loan eligibility checker. Instant results, no sign-up required.",
-    images: ["/opengraph-image"],
+    images: ["/og-image.svg"],
   },
   alternates: {
     canonical: SITE_URL,

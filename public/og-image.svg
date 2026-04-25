@@ -1,0 +1,40 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#020617"/>
+  <rect x="64" y="64" width="1072" height="502" rx="40" fill="url(#paint0_linear)" stroke="rgba(255,255,255,0.10)"/>
+  <circle cx="980" cy="130" r="170" fill="rgba(59,130,246,0.18)"/>
+  <circle cx="220" cy="480" r="220" fill="rgba(15,23,42,0.55)"/>
+
+  <text x="96" y="178" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="800" letter-spacing="-2">
+    FinVault
+  </text>
+  <text x="96" y="248" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="500">
+    Free Financial Calculators &amp; Money Guides
+  </text>
+
+  <g transform="translate(96 320)">
+    <rect x="0" y="0" width="238" height="58" rx="29" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
+    <text x="119" y="37" text-anchor="middle" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600">EMI Calculator</text>
+  </g>
+
+  <g transform="translate(352 320)">
+    <rect x="0" y="0" width="320" height="58" rx="29" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
+    <text x="160" y="37" text-anchor="middle" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600">Credit Card Optimizer</text>
+  </g>
+
+  <g transform="translate(688 320)">
+    <rect x="0" y="0" width="320" height="58" rx="29" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
+    <text x="160" y="37" text-anchor="middle" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600">Loan Eligibility</text>
+  </g>
+
+  <text x="96" y="540" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="500">
+    finvaultguide.com
+  </text>
+
+  <defs>
+    <linearGradient id="paint0_linear" x1="64" y1="64" x2="1136" y2="566" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f172a"/>
+      <stop offset="0.52" stop-color="#111b31"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useMemo } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
@@ -19,7 +19,8 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>
 
 export function CreditCardOptimizer() {
-  const [isSearching, setIsSearching] = React.useState(false)
+  const [isSearching, setIsSearching] = useState(false)
+  const [hasMounted, setHasMounted] = useState(false)
 
   const handleSearch = () => {
     setIsSearching(true)
@@ -37,6 +38,10 @@ export function CreditCardOptimizer() {
   })
 
   const formValues = watch()
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
 
   const results = useMemo(() => {
     const balance = Number(formValues.balance) || 0
@@ -210,26 +215,30 @@ export function CreditCardOptimizer() {
              </CardHeader>
              <CardContent className="flex flex-col sm:flex-row items-center gap-8 py-8 px-6">
                 <div className="w-full sm:w-1/2 h-[220px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                      <Pie
-                        data={chartData}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={65}
-                        outerRadius={85}
-                        paddingAngle={4}
-                        dataKey="value"
-                        stroke="none"
-                        animationDuration={1000}
-                      >
-                        {chartData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={entry.color} />
-                        ))}
-                      </Pie>
-                      <Tooltip formatter={(value: any) => formatCurrency(Number(value) || 0)} />
-                    </PieChart>
-                  </ResponsiveContainer>
+                  {hasMounted ? (
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={chartData}
+                          cx="50%"
+                          cy="50%"
+                          innerRadius={65}
+                          outerRadius={85}
+                          paddingAngle={4}
+                          dataKey="value"
+                          stroke="none"
+                          animationDuration={1000}
+                        >
+                          {chartData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Pie>
+                        <Tooltip formatter={(value: any) => formatCurrency(Number(value) || 0)} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  ) : (
+                    <div className="h-full w-full rounded-2xl bg-muted/30 animate-pulse" />
+                  )}
                 </div>
                 <div className="w-full sm:w-1/2 space-y-6">
                   <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10 flex items-center justify-between">
